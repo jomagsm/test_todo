@@ -1,3 +1,6 @@
 {
-    "test": "Test"
+    "kanban": "Канбан",
+    "enterUserName": "Введите имя пользователя",
+    "enterUserPass": "Введите пароль",
+    "logIn":"Log in"
 }

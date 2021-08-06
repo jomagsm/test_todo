@@ -50,11 +50,41 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `test`
-  String get test {
+  /// `Kanban`
+  String get kanban {
     return Intl.message(
-      'test',
-      name: 'test',
+      'Kanban',
+      name: 'kanban',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your username`
+  String get enterUserName {
+    return Intl.message(
+      'Enter your username',
+      name: 'enterUserName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your password`
+  String get enterUserPass {
+    return Intl.message(
+      'Enter your password',
+      name: 'enterUserPass',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Log in`
+  String get logIn {
+    return Intl.message(
+      'Log in',
+      name: 'logIn',
       desc: '',
       args: [],
     );
