@@ -11,4 +11,14 @@ class TextThemes {
       fontSize: 20,
       fontWeight: FontWeight.w500,
       color: ColorPalette.outlinedBorder);
+  
+  static var inputText = TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+      color: ColorPalette.white);
+  
+   static var errorText = TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+      color: ColorPalette.red);
 }
