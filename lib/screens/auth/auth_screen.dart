@@ -24,75 +24,89 @@ class AuthScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextFormField(
-                  onChanged: (userName) =>
-                      _userApp.changeData(userName: userName),
-                  // controller: model?.loginTextController,
-                  textAlign: TextAlign.center,
-                  style: TextThemes.inputText,
-                  decoration: InputDecoration(
-                    hintText: AppLocalizations.of(context)!.enterUserName,
-                    hintStyle: TextThemes.hintText,
-                    border: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(color: ColorPalette.outlinedBorder)),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25.0),
-                      borderSide: BorderSide(
-                        color: ColorPalette.focusedBorder,
-                        width: 2.0,
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                        borderSide:
-                            BorderSide(color: ColorPalette.focusedBorder)),
-                    // errorBorder:
-                    //     OutlineInputBorder(borderSide: BorderSide(color: Colors.purple)),
-                    focusedErrorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                        borderSide: BorderSide(color: Colors.purple)),
-                    // errorStyle: TextStyle(color: Colors.purple),
-                  )),
+              _InputTextField(
+                userName: true,
+              ),
+              // TextFormField(
+              //     onChanged: (userName) =>
+              //         _userApp.changeData(userName: userName),
+              //     // controller: model?.loginTextController,
+              //     textAlign: TextAlign.center,
+              //     style: TextThemes.inputText,
+              //     decoration: InputDecoration(
+              //       hintText: AppLocalizations.of(context)!.enterUserName,
+              //       hintStyle: TextThemes.hintText,
+              //       border: OutlineInputBorder(
+              //           borderSide:
+              //               BorderSide(color: ColorPalette.outlinedBorder)),
+              //       enabledBorder: OutlineInputBorder(
+              //         borderSide: BorderSide(color: Colors.grey, width: 2),
+              //         borderRadius: BorderRadius.circular(25.0),
+              //       ),
+              //       // enabledBorder: OutlineInputBorder(
+              //       //   borderRadius: BorderRadius.circular(25.0),
+              //       //   borderSide: BorderSide(
+              //       //     color: ColorPalette.focusedBorder,
+              //       //     width: 2.0,
+              //       //   ),
+              //       // ),
+              //       focusedBorder: OutlineInputBorder(
+              //           borderRadius: BorderRadius.circular(25.0),
+              //           borderSide: BorderSide(
+              //               color: ColorPalette.focusedBorder, width: 2)),
+              //       errorBorder: OutlineInputBorder(
+              //         borderSide: BorderSide(color: Colors.red, width: 2),
+              //         borderRadius: BorderRadius.circular(25.0),
+              //       ),
+              //       // errorBorder:
+              //       //     OutlineInputBorder(borderSide: BorderSide(color: Colors.purple)),
+              //       focusedErrorBorder: OutlineInputBorder(
+              //           borderRadius: BorderRadius.circular(25.0),
+              //           borderSide: BorderSide(color: Colors.purple, width: 2)),
+              //       // errorStyle: TextStyle(color: Colors.purple),
+              //     )),
               const _ErrorMessageWidget(
                 userName: true,
                 userPassword: false,
               ),
+              _InputTextField(
+                userName: false,
+              ),
               // const SizedBox(
               //   height: 20,
               // ),
-              TextFormField(
-                  obscureText: true,
-                  onChanged: (password) =>
-                      _userApp.changeData(password: password),
-                  // controller: model?.passwordTextController,
-                  textAlign: TextAlign.center,
-                  style: TextThemes.inputText,
-                  decoration: InputDecoration(
-                    hintText: AppLocalizations.of(context)!.enterUserPass,
-                    hintStyle: TextThemes.hintText,
-                    border: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(color: ColorPalette.outlinedBorder)),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25.0),
-                      borderSide: BorderSide(
-                        color: ColorPalette.focusedBorder,
-                        width: 2.0,
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                        borderSide:
-                            BorderSide(color: ColorPalette.focusedBorder)),
-                    // errorBorder:
-                    //     OutlineInputBorder(borderSide: BorderSide(color: Colors.purple)),
-                    focusedErrorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                        borderSide:
-                            BorderSide(color: ColorPalette.focusedBorder)),
-                    // errorStyle: TextStyle(color: Colors.purple),
-                  )),
+              // TextFormField(
+              //     obscureText: true,
+              //     onChanged: (password) =>
+              //         _userApp.changeData(password: password),
+              //     // controller: model?.passwordTextController,
+              //     textAlign: TextAlign.center,
+              //     style: TextThemes.inputText,
+              //     decoration: InputDecoration(
+              //       hintText: AppLocalizations.of(context)!.enterUserPass,
+              //       hintStyle: TextThemes.hintText,
+              //       border: OutlineInputBorder(
+              //           borderSide:
+              //               BorderSide(color: ColorPalette.outlinedBorder)),
+              //       enabledBorder: OutlineInputBorder(
+              //         borderRadius: BorderRadius.circular(25.0),
+              //         borderSide: BorderSide(
+              //           color: ColorPalette.focusedBorder,
+              //           width: 2.0,
+              //         ),
+              //       ),
+              //       focusedBorder: OutlineInputBorder(
+              //           borderRadius: BorderRadius.circular(25.0),
+              //           borderSide:
+              //               BorderSide(color: ColorPalette.focusedBorder)),
+              //       // errorBorder:
+              //       //     OutlineInputBorder(borderSide: BorderSide(color: Colors.purple)),
+              //       focusedErrorBorder: OutlineInputBorder(
+              //           borderRadius: BorderRadius.circular(25.0),
+              //           borderSide:
+              //               BorderSide(color: ColorPalette.focusedBorder)),
+              //       // errorStyle: TextStyle(color: Colors.purple),
+              //     )),
               const _ErrorMessageWidget(
                 userName: false,
                 userPassword: true,
@@ -102,7 +116,7 @@ class AuthScreen extends StatelessWidget {
               // ),
               InkWell(
                 onTap: context.watch<UserApp>().activeButton
-                    ? ()async {
+                    ? () async {
                         await _userApp.auth();
                         context.read<UserApp>().authSuccess
                             ? Navigator.pushAndRemoveUntil(
@@ -171,5 +185,48 @@ class _ErrorMessageWidget extends StatelessWidget {
     return const SizedBox(
       height: 20,
     );
+  }
+}
+
+class _InputTextField extends StatelessWidget {
+  final bool userName;
+  const _InputTextField({
+    Key? key,
+    required this.userName,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final _userApp = context.read<UserApp>();
+    return TextFormField(
+        obscureText: !userName,
+        onChanged: userName
+            ? (userName) => _userApp.changeData(userName: userName)
+            : (password) => _userApp.changeData(password: password),
+        textAlign: TextAlign.center,
+        style: TextThemes.inputText,
+        decoration: InputDecoration(
+          hintText: userName
+              ? AppLocalizations.of(context)!.enterUserName
+              : AppLocalizations.of(context)!.enterUserPass,
+          hintStyle: TextThemes.hintText,
+          border: OutlineInputBorder(
+              borderSide: BorderSide(color: ColorPalette.outlinedBorder)),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.grey, width: 2),
+            borderRadius: BorderRadius.circular(25.0),
+          ),
+          focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(25.0),
+              borderSide:
+                  BorderSide(color: ColorPalette.focusedBorder, width: 2)),
+          errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.red, width: 2),
+            borderRadius: BorderRadius.circular(25.0),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(25.0),
+              borderSide: BorderSide(color: Colors.purple, width: 2)),
+        ));
   }
 }
