@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterUserName":
             MessageLookupByLibrary.simpleMessage("Введите имя пользователя"),
         "enterUserPass": MessageLookupByLibrary.simpleMessage("Введите пароль"),
+        "id": MessageLookupByLibrary.simpleMessage("id"),
         "inProgress": MessageLookupByLibrary.simpleMessage("В процессе"),
         "kanban": MessageLookupByLibrary.simpleMessage("Канбан"),
         "logIn": MessageLookupByLibrary.simpleMessage("Авторизоваться"),

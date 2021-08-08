@@ -6,5 +6,6 @@
     "onHold": "На удержании",
     "inProgress": "В процессе",
     "needsRevison": "Требуется доработка",
-    "approved": "Одобренные"
+    "approved": "Одобренные",
+    "id":"id"
 }

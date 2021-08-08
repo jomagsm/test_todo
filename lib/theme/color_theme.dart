@@ -7,4 +7,5 @@ class ColorPalette {
   static var outlinedBorder = Color(0xff2C2427);
   static var white = Colors.white;
   static var red = Colors.red;
+  static var grayLight = Color(0xff424140);
 }

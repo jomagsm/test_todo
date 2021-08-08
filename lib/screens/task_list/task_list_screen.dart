@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:test_todo/data/server_api/models/card_model.dart';
 import 'package:test_todo/screens/task_list/tasks_bloc/tasks_bloc.dart';
 import 'package:test_todo/theme/color_theme.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:test_todo/theme/text_theme.dart';
 
 class TaskList extends StatelessWidget {
   const TaskList({Key? key}) : super(key: key);
@@ -15,7 +15,18 @@ class TaskList extends StatelessWidget {
       child: DefaultTabController(
         length: 4,
         child: Scaffold(
+          backgroundColor: ColorPalette.backgroundBlack,
           appBar: AppBar(
+            actions: [
+              Padding( padding: const EdgeInsets.all(5),
+                child: FloatingActionButton(
+                    backgroundColor: ColorPalette.focusedBorder,
+                    onPressed: () {},
+                    child: const Icon(
+                      Icons.arrow_back,
+                    )),
+              )
+            ],
             backgroundColor: ColorPalette.gray,
             bottom: TabBar(
               tabs: [
@@ -28,10 +39,18 @@ class TaskList extends StatelessWidget {
           ),
           body: TabBarView(
             children: [
-              Center(child: Text("Car")),
-              Center(child: Text("Transit")),
-              Center(child: Text("Bike")),
-              Center(child: Text("Bike"))
+              _TasksList(
+                row: '0',
+              ),
+              _TasksList(
+                row: '1',
+              ),
+              _TasksList(
+                row: '2',
+              ),
+              _TasksList(
+                row: '3',
+              )
             ],
           ),
         ),
@@ -41,17 +60,48 @@ class TaskList extends StatelessWidget {
 }
 
 class _TasksList extends StatelessWidget {
-  final List<Cards> cardsList;
-  const _TasksList({Key? key, required this.cardsList}) : super(key: key);
+  final String row;
+  const _TasksList({Key? key, required this.row}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        itemCount: cardsList.length,
-        itemBuilder: (_, index) {
-          return Container(child: Text(cardsList[index].id.toString()),);
-        });
+    return BlocProvider<TasksBloc>(
+        create: (BuildContext context) =>
+            TasksBloc()..add(TasksEvent.initial(row: row)),
+        child: BlocConsumer<TasksBloc, TasksState>(
+          listener: (context, state) {},
+          builder: (context, state) {
+            return state.maybeMap(
+                orElse: () => Text('Error'),
+                loadInProgress: (_) =>
+                    Center(child: CircularProgressIndicator()),
+                loadSuccess: (_data) => Container(
+                      padding: const EdgeInsets.all(20),
+                      child: ListView.builder(
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          itemCount: _data.cardList.length,
+                          itemBuilder: (_, index) {
+                            return Container(
+                                margin: const EdgeInsets.symmetric(vertical: 5),
+                                padding: const EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                    color: ColorPalette.grayLight,
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      '${AppLocalizations.of(context)!.id.toUpperCase()}: ${_data.cardList[index].id.toString()}',
+                                      style: TextThemes.cardId,
+                                    ),
+                                    Text(_data.cardList[index].text,
+                                        style: TextThemes.cardContent),
+                                  ],
+                                ));
+                          }),
+                    ));
+          },
+        ));
   }
 }

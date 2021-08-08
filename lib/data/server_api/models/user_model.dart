@@ -71,7 +71,7 @@ class UserApp extends ChangeNotifier {
   bool _authSuccess = false;
   String? _serverError;
 
-  static String? token;
+  static String? token= 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyMzksInVzZXJuYW1lIjoiYXJtYWRhIiwiZXhwIjoxNjI4NDQ5MjI1LCJlbWFpbCI6IiIsIm9yaWdfaWF0IjoxNjI4NDQ1NjI1fQ.-4LuzPTuiXjAnH0aJQpkiWBbDbiwAHrtdk14KCNApQw';
 
   String? get getUserName => _userName;
   String? get getEmail => _email;
