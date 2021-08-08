@@ -1,3 +1,4 @@
+import 'package:test_todo/data/server_api/models/card_model.dart';
 import 'package:test_todo/data/server_api/server_api.dart';
 
 class Repository {
@@ -12,8 +13,17 @@ class Repository {
           await _serviceApi.login(username: username, password: password);
       return response;
     } catch (e) {
-      print(e);
       throw (e);
     }
   }
+
+   Future<List<Cards>> getCards(String? row) async{
+    try {
+      final response =
+          await _serviceApi.getCars(row);
+      return response;
+    } catch (e) {
+      throw (e);
+    }
+   }
 }

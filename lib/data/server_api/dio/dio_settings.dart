@@ -121,6 +121,8 @@ class DioSettings {
     interceptors.requestLock.lock();
 
     interceptors.clear();
+    if (UserApp.token != null)
+      dio.options.headers["Authorization"] = "JWT ${UserApp.token}";
     interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) {

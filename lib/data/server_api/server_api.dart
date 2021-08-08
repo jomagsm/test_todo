@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 
 import 'dio/dio_settings.dart';
+import 'models/card_model.dart';
 
 class ServerApi {
   static ServerApi _instance = new ServerApi.internal();
@@ -35,18 +36,23 @@ class ServerApi {
     } catch (e) {
       throw e;
     }
-    // return loginFromJson(authResponse.toString());
   }
 
-  // Future<List<Category>> getAllCategory(String locale) async {
-  //   try {
-  //     Response<String> response = await _dio.get(
-  //       "/category/list",
-  //        queryParameters: {"lang": 'kg'});
-  //     return categoryFromJson(response.toString());
-  //   } catch (e) {
-  //     throw e;
-  //   }
-  // }
-
+  Future<List<Cards>> getCars(String? row) async {
+    try {
+      Response<String> response;
+      if (row != null){
+       response = await _dio.get(
+        "/cards/",
+         queryParameters: {"row": row});
+      }
+      else{
+        response = await _dio.get(
+        "/cards/",);
+      }
+      return cardFromJson(response.toString());
+    } catch (e) {
+      throw e;
+    }
+  }
 }

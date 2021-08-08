@@ -134,27 +134,3 @@ class UserApp extends ChangeNotifier {
 
   }
 }
-
-AuthUser authUserFromJson(String str) => AuthUser.fromJson(json.decode(str));
-
-String authUserToJson(AuthUser data) => json.encode(data.toJson());
-
-class AuthUser {
-  AuthUser({
-    required this.username,
-    required this.password,
-  });
-
-  String username;
-  String password;
-
-  factory AuthUser.fromJson(Map<String, dynamic> json) => AuthUser(
-        username: json["username"],
-        password: json["password"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "username": username,
-        "password": password,
-      };
-}
