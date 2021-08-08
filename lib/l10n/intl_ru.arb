@@ -2,5 +2,9 @@
     "kanban": "Канбан",
     "enterUserName": "Введите имя пользователя",
     "enterUserPass": "Введите пароль",
-    "logIn":"Log in"
+    "logIn": "Авторизоваться",
+    "onHold": "На удержании",
+    "inProgress": "В процессе",
+    "needsRevison": "Требуется доработка",
+    "approved": "Одобренные"
 }

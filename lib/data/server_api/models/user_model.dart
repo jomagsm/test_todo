@@ -67,7 +67,8 @@ class UserApp extends ChangeNotifier {
   String? _password;
   String? _errorUser;
   String? _errorPassword;
-  bool active = false;
+  bool _activeButton = false;
+  bool _authSuccess = false;
   String? _serverError;
 
   static String? token;
@@ -77,6 +78,8 @@ class UserApp extends ChangeNotifier {
   String? get getPassword => _password;
   String? get errorUser => _errorUser;
   String? get errorPassword => _errorPassword;
+  bool get activeButton => _activeButton;
+  bool get authSuccess => _authSuccess;
 
   void setUserName(value) {
     if (value.length < 4) {
@@ -84,7 +87,7 @@ class UserApp extends ChangeNotifier {
     } else {
       _errorUser = null;
       if (_password != null && _password!.length >= 8) {
-        active = true;
+        _activeButton = true;
       }
     }
   }
@@ -95,7 +98,7 @@ class UserApp extends ChangeNotifier {
     } else {
       _errorPassword = null;
       if (_userName != null && _userName!.length >= 4) {
-        active = true;
+        _activeButton = true;
       }
     }
   }
@@ -124,13 +127,13 @@ class UserApp extends ChangeNotifier {
     final _repository = Repository();
     try {
       var data = await _repository.login(_userName!, _password!);
-      UserApp.token=data;
-      active = false;
+      UserApp.token = data;
+      _activeButton = false;
+      _authSuccess = true;
     } catch (e) {
       _serverError = "Auth ERROR";
-      active = true;
-      notifyListeners();
+      _activeButton = true;
     }
-
+    notifyListeners();
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:test_todo/data/server_api/models/user_model.dart';
+import 'package:test_todo/screens/task_list/task_list_screen.dart';
 import 'package:test_todo/theme/color_theme.dart';
 import 'package:test_todo/theme/text_theme.dart';
 import 'package:provider/provider.dart';
@@ -61,7 +62,7 @@ class AuthScreen extends StatelessWidget {
               //   height: 20,
               // ),
               TextFormField(
-                obscureText: true,
+                  obscureText: true,
                   onChanged: (password) =>
                       _userApp.changeData(password: password),
                   // controller: model?.passwordTextController,
@@ -100,7 +101,20 @@ class AuthScreen extends StatelessWidget {
               //   height: 20,
               // ),
               InkWell(
-                onTap: () {_userApp.auth();},
+                onTap: context.watch<UserApp>().activeButton
+                    ? ()async {
+                        await _userApp.auth();
+                        context.read<UserApp>().authSuccess
+                            ? Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TaskList()),
+                                (Route<dynamic> route) => false,
+                              )
+                            // ignore: unnecessary_statements
+                            : null;
+                      }
+                    : () {},
                 child: Container(
                   height: 50,
                   width: double.infinity,
@@ -154,6 +168,8 @@ class _ErrorMessageWidget extends StatelessWidget {
           ),
         );
     }
-    return const SizedBox(height: 20,);
+    return const SizedBox(
+      height: 20,
+    );
   }
 }

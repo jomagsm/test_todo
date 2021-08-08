@@ -14,5 +14,21 @@
     "logIn": "Log in",
     "@logIn": {
       "description": ""
+    },
+    "onHold": "On hold",
+    "@onHold": {
+      "description": ""
+    },
+    "inProgress": "In progress",
+    "@inProgress": {
+      "description": ""
+    },
+    "needsRevison": "Needs revision",
+    "@needsRevison": {
+      "description": ""
+    },
+    "approved": "Approved",
+    "@approved": {
+      "description": ""
     }
 }

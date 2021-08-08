@@ -21,11 +21,15 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "approved": MessageLookupByLibrary.simpleMessage("Approved"),
         "enterUserName":
             MessageLookupByLibrary.simpleMessage("Enter your username"),
         "enterUserPass":
             MessageLookupByLibrary.simpleMessage("Enter your password"),
+        "inProgress": MessageLookupByLibrary.simpleMessage("In progress"),
         "kanban": MessageLookupByLibrary.simpleMessage("Kanban"),
-        "logIn": MessageLookupByLibrary.simpleMessage("Log in")
+        "logIn": MessageLookupByLibrary.simpleMessage("Log in"),
+        "needsRevison": MessageLookupByLibrary.simpleMessage("Needs revision"),
+        "onHold": MessageLookupByLibrary.simpleMessage("On hold")
       };
 }

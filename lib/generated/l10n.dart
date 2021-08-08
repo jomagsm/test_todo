@@ -89,6 +89,46 @@ class S {
       args: [],
     );
   }
+
+  /// `On hold`
+  String get onHold {
+    return Intl.message(
+      'On hold',
+      name: 'onHold',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `In progress`
+  String get inProgress {
+    return Intl.message(
+      'In progress',
+      name: 'inProgress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Needs revision`
+  String get needsRevison {
+    return Intl.message(
+      'Needs revision',
+      name: 'needsRevison',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Approved`
+  String get approved {
+    return Intl.message(
+      'Approved',
+      name: 'approved',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
