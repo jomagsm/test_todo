@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
@@ -6,7 +7,12 @@ import 'package:test_todo/data/server_api/models/user_model.dart';
 
 import 'screens/auth/auth_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   runApp(MyApp());
 }
 
@@ -14,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<UserApp>(
-      create: (context)=> UserApp(),
+      create: (context) => UserApp(),
       child: MaterialApp(
           title: 'Flutter Demo',
           localizationsDelegates: [
@@ -33,9 +39,9 @@ class MyApp extends StatelessWidget {
           ),
           home: AuthScreen()),
     );
-        // routes: {
-        //   '/auth': (context) =>
-        //        AuthProvider(model: AuthModel(), child: AuthScreen()),
-        // });
+    // routes: {
+    //   '/auth': (context) =>
+    //        AuthProvider(model: AuthModel(), child: AuthScreen()),
+    // });
   }
 }

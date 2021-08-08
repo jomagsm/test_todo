@@ -100,7 +100,7 @@ class AuthScreen extends StatelessWidget {
               //   height: 20,
               // ),
               InkWell(
-                onTap: () {},
+                onTap: () {_userApp.auth();},
                 child: Container(
                   height: 50,
                   width: double.infinity,

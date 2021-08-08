@@ -1,8 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
+import 'package:test_todo/data/repository/repository.dart';
 
 // UserApp userFromJson(String str) => UserApp.fromJson(json.decode(str));
 
-// String userToJson(UserApp data) => json.encode(data.toJson());
+String userToJson(UserApp data) => json.encode(data.toJson());
 
 // class UserApp {
 //   UserApp{
@@ -65,6 +68,9 @@ class UserApp extends ChangeNotifier {
   String? _errorUser;
   String? _errorPassword;
   bool active = false;
+  String? _serverError;
+
+  static String? token;
 
   String? get getUserName => _userName;
   String? get getEmail => _email;
@@ -77,7 +83,7 @@ class UserApp extends ChangeNotifier {
       _errorUser = "Minimum is 4 characters";
     } else {
       _errorUser = null;
-      if(_password != null && _password!.length >= 8){
+      if (_password != null && _password!.length >= 8) {
         active = true;
       }
     }
@@ -88,7 +94,7 @@ class UserApp extends ChangeNotifier {
       _errorPassword = "Minimum is 8 characters";
     } else {
       _errorPassword = null;
-      if(_userName != null && _userName!.length >= 4){
+      if (_userName != null && _userName!.length >= 4) {
         active = true;
       }
     }
@@ -108,4 +114,47 @@ class UserApp extends ChangeNotifier {
     }
     notifyListeners();
   }
+
+  Map<String, dynamic> toJson() => {
+        "username": _userName,
+        "password": _password,
+      };
+
+  Future<void> auth() async {
+    final _repository = Repository();
+    try {
+      var data = await _repository.login(_userName!, _password!);
+      UserApp.token=data;
+      active = false;
+    } catch (e) {
+      _serverError = "Auth ERROR";
+      active = true;
+      notifyListeners();
+    }
+
+  }
+}
+
+AuthUser authUserFromJson(String str) => AuthUser.fromJson(json.decode(str));
+
+String authUserToJson(AuthUser data) => json.encode(data.toJson());
+
+class AuthUser {
+  AuthUser({
+    required this.username,
+    required this.password,
+  });
+
+  String username;
+  String password;
+
+  factory AuthUser.fromJson(Map<String, dynamic> json) => AuthUser(
+        username: json["username"],
+        password: json["password"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "username": username,
+        "password": password,
+      };
 }
