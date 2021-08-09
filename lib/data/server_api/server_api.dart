@@ -19,6 +19,9 @@ class ServerApi {
   late Dio _dio;
 
   // late Map<String, dynamic> _request;
+  Future<void> initialRequestData(String token)async{
+    await _dioSettings.initialAuthData(token);
+  }
 
   Future<String> login({
     required String username,

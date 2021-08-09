@@ -193,6 +193,6 @@ class DioSettings {
   }
 
   Future<void> initialAuthData(String? authToken) async {
-    dio.options.headers["Authorization"] = "Bearer $authToken";
+     dio.options.headers["Authorization"] = "JWT ${UserApp.token}";
   }
 }

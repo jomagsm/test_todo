@@ -7,60 +7,6 @@ import 'package:test_todo/data/repository/repository.dart';
 
 String userToJson(UserApp data) => json.encode(data.toJson());
 
-// class UserApp {
-//   UserApp{
-//     Hive.initFlutter();
-//   }
-//   UserApp({
-//     required this.username,
-//     required this.email,
-//     required this.password,
-//   });
-
-//   String username;
-//   String email;
-//   String password;
-
-//   factory UserApp.fromJson(Map<String, dynamic> json) => UserApp(
-//         username: json["username"],
-//         email: json["email"],
-//         password: json["password"],
-//       );
-
-//   Map<String, dynamic> toJson() => {
-//         "username": username,
-//         "email": email,
-//         "password": password,
-//       };
-// }
-
-// class AuthModel extends ChangeNotifier {
-//   final loginTextController = TextEditingController();
-//   final passwordTextController = TextEditingController();
-
-//   String? _errorMessage;
-//   String? get errorMessage => _errorMessage;
-
-//   Future<void> auth(BuildContext context) async {}
-// }
-
-// class AuthProvider extends InheritedNotifier {
-//   final AuthModel model;
-
-//   AuthProvider({Key? key, required Widget child, required this.model})
-//       : super(key: key, child: child);
-
-//   static AuthProvider? watch(BuildContext context) {
-//     return context.dependOnInheritedWidgetOfExactType<AuthProvider>();
-//   }
-
-//   static AuthProvider? read(BuildContext context) {
-//     final widget =
-//         context.getElementForInheritedWidgetOfExactType<AuthProvider>()?.widget;
-//     return widget is AuthProvider ? widget : null;
-//   }
-// }
-
 class UserApp extends ChangeNotifier {
   String? _userName;
   String? _email;
@@ -128,6 +74,7 @@ class UserApp extends ChangeNotifier {
     try {
       var data = await _repository.login(_userName!, _password!);
       UserApp.token = data;
+      await _repository.initialRequestData(UserApp.token!);
       _activeButton = false;
       _authSuccess = true;
     } catch (e) {

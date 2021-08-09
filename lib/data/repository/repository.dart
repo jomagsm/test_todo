@@ -4,6 +4,10 @@ import 'package:test_todo/data/server_api/server_api.dart';
 class Repository {
   final _serviceApi = ServerApi();
 
+  Future<void> initialRequestData(String token)async{
+    return await _serviceApi.initialRequestData(token);
+  }
+
   Future<String> login(
     String username,
     String password,
